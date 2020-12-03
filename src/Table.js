@@ -8,7 +8,7 @@ function Table({countries}) {
             
             <tr>
                 <td>{country}</td>
-                <td><strong>{cases}</strong></td>
+                <td><strong>{cases.toLocaleString('en', { maximumSignificantDigits: 3 })}</strong></td>
             </tr>)}
           
         </div>

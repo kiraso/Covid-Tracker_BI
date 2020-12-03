@@ -1,0 +1,21 @@
+.infoBox__caseP > h2{
+    font-size: 30px;
+    color: #6199ff;
+    font-weight: 400;
+}
+
+
+.infoBox__total{
+    color: #572e2ed2;
+}
+
+.card_covid{
+    width: 30%;
+
+}
+
+
+/* 
+.infoBox__case {
+    color: #ff733c;
+} */

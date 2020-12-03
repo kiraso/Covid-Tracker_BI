@@ -23,11 +23,15 @@ function App() {
     fetch('https://disease.sh/v3/covid-19/all')
     .then(response => response.json())
     .then(data => {
+
+      
+      Object.keys(data).map(function(key, index) {
+        console.log(key)
+        return data[key] = data[key].toLocaleString('en', { maximumSignificantDigits: 3 })      
+      });
       setCountryInfo(data)
     })
   },[])
-
-  //STATE = How to wirte a val in REACT
 
   //https://disease.sh/v3/covid-18/countries
 
@@ -43,7 +47,7 @@ function App() {
         await fetch ('https://disease.sh/v3/covid-19/countries')
         .then( (response) => response.json())
         .then((data) => {
-          
+          console.log(data)
           const  countries = data.map((country) => (
             {
               name: country.country, // United States, United Kingdom
@@ -70,8 +74,15 @@ function App() {
     .then(response => response.json())
     .then(data => {
       setCountry(countryCode);
-      //all the data from the country response
-
+      Object.keys(data).map(function(key, index) {
+        console.log(key)
+        if(key === 'todayCases' || key === 'cases' || key === 'todayRecovered' || key === 'recovered' || key === 'todayDeaths' || key === 'deaths'){
+          return data[key] = data[key].toLocaleString('en', { maximumSignificantDigits: 3 })  
+        }else {
+          return data[key] 
+        }
+            
+      });
       setCountryInfo(data);
       setMapCenter([data.countryInfo.lat,data.countryInfo.long])
       setMapZoom(4)
@@ -79,8 +90,7 @@ function App() {
     //https://disease.sh/v3/covid-18/all 
     //https://disease.sh/v3/covid-18/countries/[COUNTRY_CODE]
   }
-
-  console.log('contry info',countryInfo)
+              
   return (
     <div className="App"> 
 
@@ -88,7 +98,7 @@ function App() {
        {/* Header */}
     {/* Title + Select input dropdown field */}
           <div className="app__header">
-          <h1>COVID-19 ANNIE TRACKING</h1>
+          <h1>COVID-19 TRACKING</h1>
           <FormControl className="app__dropdown ">
             <Select
               variant="outlined"

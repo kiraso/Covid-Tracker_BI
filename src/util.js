@@ -31,7 +31,9 @@ export const sortData = (data) => {
 
 //Draw circle on the map
 export const showDataOnMap = (data, casesType='cases') => (
+  
     data.map((country)=> (
+        
         <Circle
         center={[country.countryInfo.lat ,country.countryInfo.long]}
         fillOpacity={0.4}
@@ -41,9 +43,11 @@ export const showDataOnMap = (data, casesType='cases') => (
             Math.sqrt(country[casesType]) * casesTypeColors[casesType].multiplier
         }
         >
+            
             <Popup>
-               <div
-               style={{backgroundImage: `url(${country.countryInfo.flag})`}}
+               <img 
+               src={country.countryInfo.flag}
+                width="50" height="30"
                />
                <div>{country.country}</div>
                <div>Cases: {numeral(country.cases).format("0,0")}</div>

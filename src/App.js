@@ -17,8 +17,12 @@ function App() {
   const [mapZoom,setMapZoom] = useState(3)
   const [mapCountries,setMapCountries] = useState([])
   
-  
-
+  const [dateShow,setDateShow] = useState()
+  const monthNames = ["January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"
+  ];
+console.log(typeof new Date)
+console.log(new Date)
   useEffect(() => {
     fetch('https://disease.sh/v3/covid-19/all')
     .then(response => response.json())
@@ -29,7 +33,9 @@ function App() {
         console.log(key)
         return data[key] = data[key].toLocaleString('en', { maximumSignificantDigits: 3 })      
       });
+      var thisDay =  new Date()
       setCountryInfo(data)
+      setDateShow(thisDay.getDay()+'  '+monthNames[thisDay.getMonth()]+'  ' + thisDay.getFullYear())
     })
   },[])
 
@@ -98,7 +104,8 @@ function App() {
        {/* Header */}
     {/* Title + Select input dropdown field */}
           <div className="app__header">
-          <h1>COVID-19 TRACKING</h1>
+          <h1>COVID-19 TRACKING </h1>
+         
           <FormControl className="app__dropdown ">
             <Select
               variant="outlined"
@@ -120,19 +127,22 @@ function App() {
             </Select>
           </FormControl>
           </div>
-        
+          <div>
+            <h2 Style="margin: 15px;">📆 {dateShow}</h2>
+          </div>
+         
         
         <div className="app__stats">
            {/* InfoBoxs */}
-          <InfoBox title="Coronavirus Case" 
+          <InfoBox title="Coronavirus Case 😷" 
           cases={countryInfo.todayCases} 
           total={countryInfo.cases}
           />
-          <InfoBox title="Recovered" 
+          <InfoBox title="Recovered 💊" 
           cases={countryInfo.todayRecovered}   
           total={countryInfo.recovered}
           />
-          <InfoBox title="Deaths" 
+          <InfoBox title="Deaths 💀" 
           cases={countryInfo.todayDeaths} 
           total={countryInfo.deaths} 
           />
@@ -145,7 +155,7 @@ function App() {
           />
     </div>
    
-    <Card className="app__right">
+    <Card className="app__right" Style="background-color: #ffffff2a; ">
               <CardContent>
                 <h3>Live Cases by Country</h3>
                 <Table countries={tableData}/>

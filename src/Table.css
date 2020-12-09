@@ -1,8 +1,9 @@
 .table{
     margin-top: 20px;
+    margin-bottom: 30px;
     overflow: scroll;
     height: 400px;
-    background-color: hsl(0, 0%, 100%);
+    background-color: hsla(0, 0%, 100%, 0.192);
 }
 
 .table tr{
@@ -14,5 +15,5 @@
     padding: 0.5rem;
 }
 .table tr:nth-of-type(odd){
-    background-color: rgb(245, 200, 200);
+    background-color: rgba(113, 156, 248, 0.486);
 }

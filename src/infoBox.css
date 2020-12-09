@@ -6,16 +6,14 @@
 
 
 .infoBox__total{
-    color: #572e2ed2;
+    color: #271b36;
+    font-weight: 400;
 }
 
 .card_covid{
     width: 30%;
-
+    /* background-color:  #ffffff2a; */
 }
 
 
-/* 
-.infoBox__case {
-    color: #ff733c;
-} */
+
